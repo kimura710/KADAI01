@@ -22,7 +22,7 @@ public interface CalcDateRepository {
 	@Insert("insert into calcDate values(#{dateId},#{dateName},#{valueYear},#{valueMonth},#{valueDay})")
 	void save(CalcDate date);
 	
-	@Update("update calcDate set dateName =#{dateName},valueYear=#{valueYear},valueMonth=#{valueMonth},valueDay=#{valuDay}")
+	@Update("update calcDate set dateName =#{dateName},valueYear=#{valueYear},valueMonth=#{valueMonth},valueDay=#{valuDay}Å@where dateId=#{dateId}")
 	void update(CalcDate date);
 	
 	@Delete("delete from calcDate where dateId =#{dateId}")
