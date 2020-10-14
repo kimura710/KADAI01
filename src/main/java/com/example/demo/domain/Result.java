@@ -9,6 +9,11 @@ public class Result {
 	
 	private String calculated;
 
+
+	public Result(CalcDate calc) {
+		this.calc = calc;
+	}
+
 	public CalcDate getCalc() {
 		return calc;
 	}
