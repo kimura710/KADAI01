@@ -17,10 +17,10 @@ public interface CalcDateRepository {
 	List<CalcDate> selectAll();
 	
 	@Select("select * from calcDate where dateId=#{dateId}")
-	CalcDate findOne(String dateId);
+	CalcDate selectPK(String dateId);
 	
 	@Insert("insert into calcDate values(#{dateId},#{dateName},#{valueYear},#{valueMonth},#{valueDay})")
-	void save(CalcDate date);
+	void insert(CalcDate date);
 	
 	@Update("update calcDate set dateName =#{dateName},valueYear=#{valueYear},valueMonth=#{valueMonth},valueDay=#{valuDay}Å@where dateId=#{dateId}")
 	void update(CalcDate date);
