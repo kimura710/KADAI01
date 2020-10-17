@@ -15,8 +15,8 @@ import com.example.demo.domain.SimulationForm;
 import com.example.demo.service.CalculationService;
 
 @Controller
-@RequestMapping("/register")
-public class RegisterController {
+@RequestMapping("/entry")
+public class EntryController {
 	
 	// 日付計算サービスをDI
 	@Autowired
@@ -25,14 +25,14 @@ public class RegisterController {
 	//　初期表示処理
 	@GetMapping
 	public String index(@ModelAttribute CalcDate calcDate) {
-		return "register";
+		return "entry";
 	}
 	// 日付計算式を新規登録
 	// 登録した後は一覧画面に戻るようになっている
 	@PostMapping
 	public String register(@ModelAttribute @Validated CalcDate calcDate,BindingResult bindingResult,Model model) {
 		if(bindingResult.hasErrors()) {
-			return "register";
+			return "entry";
 		}
 		service.entry(calcDate);
 		model.addAttribute("simulationForm",new SimulationForm());
