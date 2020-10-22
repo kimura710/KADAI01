@@ -2,23 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<title>業務日付アプリ</title>
+<style>
+tr {
+	margin: 5px;
+}
+
+th {
+	padding: 5px;
+	color: white;
+	background: darkgray;
+}
+td{padding:5px; color:black; background:#f0f0f0;}
+</style>
 </head>
-<body>
- <table border=1>
-  <tr>
-    <th>日付ID</th>
-    <th>日付名</th>
-    <th>加減年</th>
-    <th>加減月</th>
-    <th>加減日</th>
-  </tr>
-  <tr th:each="date:${calcDate}">
-    <td th:each="${date.dateId}"></td>
-    <td th:each="${date.dateName}"></td>
-    <td th:each="${date.valueYear}"></td>
-    <td th:each="${date.valueMonth}"></td>
-    <td th:each="${date.valueDay}"></td>
- </table>
+<body id="page-top">
+	<form action="#" th:action="@{/}" method="post">
+				<div id="content">
+					<div class="container-fluid">
+						<div>
+							<h1>計算したい日付を入力してください</h1>
+							<input id="baseDate" class="input" type="text"
+								th:field="${simulationForm.baseDate}">
+							<p class="text-danger"
+								th:if="${#fields.hasErrors('simulationForm.baseDate')}"
+								th:errors="${simulationForm.baseDate}"/>
+						</div>
+						<button id="simulationButton" name="simulation"
+							class="button-default">計算する</button>
+						<p id="entryButton" class="button-default" href="entry">新規登録</p>
+
+					</div>
+				</div>
+			
+	</form>
+	<div class="container">
+	<table class="table">
+	<thead>
+	<tr>
+      <th>No.</th>	
+      <th>日付ID</th>
+      <th>日付名</th>
+      <th>計算結果</th>
+      <th>計算式（年月日）</th>
+      <th>編集</th>
+	</tr>
+	</thead>
+	<tbody th:remove="all-but-first" th:each="calcDate, stat : ${results}">
+	 <tr>
+	   <td th:text="${stat.count}">1</td>
+	   <td th:id="${stat.count} + '_dateId'" th:text="${calcDate.dateId}">abc</td>
+	   <td th:id="${stat.count} + '_dateName'" th:text="${calcDate.dateName}">翌月</td>
+	   <td th:id="${stat.count} + '_calclated'" th:text="${calcDate.calclated}">20201101</td>
+	   <td th:id="${atat.count} + '_ymd'" th:text="${calcDate.ymd}">0/1/0</td>
+	   <td>
+	    <a th:id="${stat.count} + '_updateButton'" class="button-default" th:href="@{/update/{dateId}(dateId=${calcDate.dateId})}">更新</a>
+	　　　　<form action="#" th:action="@{/dateId}(dateId=${calcDate.dateID})}" method="post">
+	      <button th:id="${stat.count} + '_deleteButton'" name="delete" class="button">削除</button>
+	</form>
+	</tbody>
+	</table> 
+	</div>
+	
 </body>
 </html>
