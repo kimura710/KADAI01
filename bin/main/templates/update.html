@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta  http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>更新</title>
+</head>
+<body>
+<div class="container">
+ <form action="#" th:action="@{/update/{dateId}(dateId=${calc.dateId})}" method="post">
+  <label>日付ID</label>
+   <div>
+   <input id="dateId" class="input" type="text" disabled="disabled" th:field="${calcDate.dateId}"/>
+   </div>
+   <label>日付名</label>
+   <div>
+    <input id="dateName" class="input" type="text" th:field="${calcDate.dateName}"/>
+   </div>
+   <label>加減年</label>
+   <div>
+    <input id="valueYear" class="input" type="text" th:field="${calcDate.valueYear}"/>
+   </div>
+   <label>加減月</label>
+   <div>
+    <input id="valueMonth" class="input" type="text" th:field="${calcDate.valueMonth}"/>
+   </div>
+   <label>加減日</label>
+   <div>
+    <input id="valueDay" class="input" type="text" th:field="${calcDate.valueDay}"/>
+   </div>
+   <button id="updateButton" name="update" class="default">更新</button>
+   <a id="backButton" class="default align-right" href="/">戻る</a>
+   
+ </form>
+</div>
+
+</body>
+</html>
