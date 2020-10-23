@@ -9,7 +9,7 @@ import javax.validation.constraints.Pattern;
 public class SimulationForm {
 	
 	@NotBlank
-	@Pattern(regexp = "((19|[2-9][0-9])[0-9{2])(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])")
+	@Pattern(regexp = "yyyyMMdd")
 	private String baseDate;
 	
 	private List<Result> results;
