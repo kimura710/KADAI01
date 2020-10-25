@@ -27,12 +27,12 @@ td {
 		<div id="content">
 			<div class="container-fluid">
 				<div>
-					<h1>計算したい日付を入力してください</h1>
+					<h1>計算したい基準日を入力してください</h1>
 					<input id="baseDate" class="input" type="text"
 						th:field="${simulationForm.baseDate}">
-					<p class="text-danger"
+					<!-- <p class="text-danger"
 						th:if="${#fields.hasErrors('simulationForm.baseDate')}"
-						th:errors="${simulationForm.baseDate}" />
+						th:errors="${simulationForm.baseDate}" /> -->
 				</div>
 				<button id="simulationButton" name="simulation"
 					class="button-default">計算する</button>

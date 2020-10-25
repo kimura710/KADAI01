@@ -24,17 +24,17 @@ public class EntryController {
 	
 	//@‰Šú•\¦ˆ—
 	@GetMapping
-	public String index(@ModelAttribute CalcDate calcDate) {
+	public String index(@ModelAttribute CalcDate form) {
 		return "entry";
 	}
 	// “ú•tŒvZ®‚ğV‹K“o˜^
 	// “o˜^‚µ‚½Œã‚Íˆê——‰æ–Ê‚É–ß‚é‚æ‚¤‚É‚È‚Á‚Ä‚¢‚é
 	@PostMapping
-	public String register(@ModelAttribute @Validated CalcDate calcDate,BindingResult bindingResult,Model model) {
+	public String entry(@ModelAttribute @Validated CalcDate form,BindingResult bindingResult,Model model) {
 		if(bindingResult.hasErrors()) {
 			return "entry";
 		}
-		service.entry(calcDate);
+		service.entry(form);
 		model.addAttribute("simulationForm",new SimulationForm());
 		return "simulation";
 	}
