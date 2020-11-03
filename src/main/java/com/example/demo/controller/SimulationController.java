@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,24 +30,27 @@ public class SimulationController {
 	@GetMapping
 	public String index(@ModelAttribute SimulationForm form) {
 		return "simulation";
+		
 	}
 	// BindingResultを使った入力値の検証
 	// エラーの場合はリターンする
 	@PostMapping
 	public String simulation(@ModelAttribute @Validated SimulationForm form,BindingResult bindingResult,Model model) {
+		
 		if(bindingResult.hasErrors()) {
 			return "simulation";
 		}
 		//　インスタンス化し第1引数にBaseDate、第２引数にsearchをいれる
 		SimulationForm sf = new SimulationForm(form.getBaseDate(),service.search());
+	   System.out.println(service.search());
 		List<Result> results = sf.getResults();
 		
-		results.stream().forEach(e -> e.setCalculated(service.calclate(form.getBaseDate(), e.getCalc())));
+		results.stream().forEach(e -> e.setCalculated(service.calclate(form.getBaseDate(), e.getCalcDate())));
 		model.addAttribute("results",results);
 		return "simulation";
 	}
 	//　任意の日付を削除する
-	@PostMapping(value="/{detaId}")
+	@PostMapping(value="/{dateId}")
 	public String delete(@PathVariable String dateId,Model model) {
 		service.delete(dateId);
 		model.addAttribute("simulationForm",new SimulationForm());

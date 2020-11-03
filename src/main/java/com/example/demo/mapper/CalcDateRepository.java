@@ -13,7 +13,7 @@ import com.example.demo.domain.CalcDate;
 @Mapper
 public interface CalcDateRepository {
 	
-	@Select("select * from calcDate where dateId=#{dateId}")
+	@Select("select * from calcDate")
 	List<CalcDate> selectAll();
 	
 	@Select("select * from calcDate where dateId=#{dateId}")

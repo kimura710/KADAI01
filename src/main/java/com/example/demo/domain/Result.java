@@ -5,27 +5,27 @@ import java.util.StringJoiner;
 
 public class Result {
 	
-	private CalcDate calc;
+	private CalcDate calcDate;
 	
 	private String calculated;
 
 
-	public Result(CalcDate calc) {
-		this.calc = calc;
+	public Result(CalcDate calcDate) {
+		this.calcDate = calcDate;
 	}
 
-	public CalcDate getCalc() {
-		return calc;
+	public CalcDate getCalcDate() {
+		return calcDate;
 	}
 
-	public void setCalc(CalcDate calc) {
-		this.calc = calc;
+	public void setCalcDate(CalcDate calc) {
+		this.calcDate = calc;
 	}
 	public String getDateId() {
-		return calc.getDateId();
+		return calcDate.getDateId();
 	}
 	public String getDateName() {
-		return calc.getDateName();
+		return calcDate.getDateName();
 	}
 
 	public String getCalculated() {
@@ -36,7 +36,7 @@ public class Result {
 		this.calculated = calculated;
 	}
 	public String getYmd() {
-		int[] ymd = {calc.getValueYear(),calc.getValueMonth(),calc.getValueDay()};
+		int[] ymd = {calcDate.getValueYear(),calcDate.getValueMonth(),calcDate.getValueDay()};
 		StringJoiner joiner = new StringJoiner(" / ");
 		Arrays.stream(ymd).forEach(i -> joiner.add(String.valueOf(i)));
 		return joiner.toString();

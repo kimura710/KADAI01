@@ -25,7 +25,7 @@ td {
 <body id="page-top">
 	<form action="#" th:action="@{/}" method="post">
 		<div id="content">
-			<div class="container-fluid">
+			<div class="container">
 				<div>
 					<h1>計算したい基準日を入力してください</h1>
 					<input id="baseDate" class="input" type="text"
@@ -61,14 +61,14 @@ td {
 					<td th:id="${stat.count} + '_dateId'" th:text="${calcDate.dateId}">abc</td>
 					<td th:id="${stat.count} + '_dateName'"
 						th:text="${calcDate.dateName}">翌月</td>
-					<td th:id="${stat.count} + '_calclated'"
-						th:text="${calcDate.calclated}">20201101</td>
-					<td th:id="${atat.count} + '_ymd'" th:text="${calcDate.ymd}">0/1/0</td>
+					<td th:id="${stat.count} + '_calculated'"
+						th:text="${calcDate.calculated}">20201101</td>
+					<td th:id="${stat.count} + '_ymd'" th:text="${calcDate.ymd}">0/1/0</td>
 					<td><a th:id="${stat.count} + '_updateButton'"
 						class="button-default"
 						th:href="@{/update/{dateId}(dateId=${calcDate.dateId})}">更新</a>
 						<form action="#"
-							th:action="@{/dateId}(dateId=${calcDate.dateID})}" method="post">
+							th:action="@{/{dateId}(dateId=${calcDate.dateId})}" method="post">
 							<button th:id="${stat.count} + '_deleteButton'" name="delete"
 								class="button">削除</button>
 						</form>
